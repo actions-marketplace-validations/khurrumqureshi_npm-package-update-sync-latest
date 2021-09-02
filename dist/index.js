@@ -344,21 +344,11 @@ class PackageJsonUpdater {
                 core.info(`${outdatedPackage.name} is ${outdatedPackage.current} wanting ${outdatedPackage.wanted}`);
                 if (packageJsonObject.dependencies && packageJsonObject.dependencies[outdatedPackage.name]) {
                     const orig = packageJsonObject.dependencies[outdatedPackage.name];
-                    if (this.shouldUpdatePackageJson(orig)) {
-                        packageJsonObject.dependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`;
-                    }
-                    else {
-                        core.info(`Skipping update of version for ${outdatedPackage.name} as update of version string ${orig} has no affect`);
-                    }
+                    packageJsonObject.dependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`;
                 }
                 else if (packageJsonObject.devDependencies && packageJsonObject.devDependencies[outdatedPackage.name]) {
                     const orig = packageJsonObject.devDependencies[outdatedPackage.name];
-                    if (this.shouldUpdatePackageJson(orig)) {
-                        packageJsonObject.devDependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`;
-                    }
-                    else {
-                        core.info(`Skipping update of version for ${outdatedPackage.name} as update of version string ${orig} has no affect`);
-                    }
+                    packageJsonObject.devDependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`;
                 }
             }
             (0, fs_1.writeFileSync)(this.packageJson, JSON.stringify(packageJsonObject, null, 2));
