@@ -1,5 +1,5 @@
 {
-  "name": "npm-package-update-sync",
+  "name": "npm-package-update-sync-latest",
   "version": "0.0.1",
   "description": "Github action for updating and syncing npm package.json",
   "private": true,
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjololo/npm-package-update-sync.git"
+    "url": "git+https://github.com/khurrumqureshi/npm-package-update-sync-latest.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tjololo/npm-package-update-sync/issues"
+    "url": "https://github.com/khurrumqureshi/npm-package-update-sync-latest/issues"
   },
-  "homepage": "https://github.com/tjololo/npm-package-update-sync#readme",
+  "homepage": "https://github.com/khurrumqureshi/npm-package-update-sync-latest#readme",
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/exec": "^1.1.0"
