@@ -6,7 +6,9 @@
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
 ![GitHub](https://img.shields.io/github/license/tjololo/npm-package-update-sync?style=plastic)
 
-Github action that checks for updates and synchronises package.json
+This repo is a fork of [npm-package-update-sync](https://github.com/tjololo/npm-package-update-sync)
+
+Github action that checks for updates and synchronises package.json with the latest available versions.
 
 This action will update dependencies to latest available version accoring to version range in package.json
 
