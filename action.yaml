@@ -1,4 +1,4 @@
-name: 'NPM package sync and update'
+name: 'NPM package sync and update to latest'
 description: 'Github action that checks for updates and synchronises version package.json'
 branding:
   icon: arrow-up-circle
