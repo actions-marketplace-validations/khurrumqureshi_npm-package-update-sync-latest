@@ -13,13 +13,13 @@ export class PackageJsonUpdater {
         const packageJsonContent = readFileSync(this.packageJson, 'utf8')
         const packageJsonObject = JSON.parse(packageJsonContent)
         for (const outdatedPackage of outdated) {
-            core.info(`${outdatedPackage.name} is ${outdatedPackage.current} wanting ${outdatedPackage.wanted}`)
+            core.info(`${outdatedPackage.name} is ${outdatedPackage.current} wanting ${outdatedPackage.latest}`)
             if (packageJsonObject.dependencies && packageJsonObject.dependencies[outdatedPackage.name]) {
                 const orig = packageJsonObject.dependencies[outdatedPackage.name]
-                packageJsonObject.dependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`
+                packageJsonObject.dependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.latest}`
             } else if (packageJsonObject.devDependencies && packageJsonObject.devDependencies[outdatedPackage.name]) {
                 const orig = packageJsonObject.devDependencies[outdatedPackage.name]
-                packageJsonObject.devDependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.wanted}`
+                packageJsonObject.devDependencies[outdatedPackage.name] = `${orig[0]}${outdatedPackage.latest}`
             }
         }
         writeFileSync(this.packageJson, JSON.stringify(packageJsonObject, null, 2))
