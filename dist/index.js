@@ -263,7 +263,7 @@ const getAllProjects = (rootFolder, recursive, ignoreFolders = [], result = [], 
         for (const fileName of files) {
             const file = (0, path_1.join)(rootFolder, fileName);
             if ((0, fs_1.statSync)(file).isDirectory()) {
-                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 2) {
+                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 8) {
                     try {
                         result = yield (0, exports.getAllProjects)(file, recursive, ignoreFolders, result, accumulator++);
                     }

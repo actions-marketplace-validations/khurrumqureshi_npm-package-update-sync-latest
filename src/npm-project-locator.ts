@@ -15,7 +15,7 @@ export const getAllProjects = async (
         for (const fileName of files) {
             const file = join(rootFolder, fileName)
             if (statSync(file).isDirectory()) {
-                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 2) {
+                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 8) {
                     try {
                         result = await getAllProjects(file, recursive, ignoreFolders, result, accumulator++)
                     } catch (error) {
