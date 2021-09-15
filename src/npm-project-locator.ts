@@ -6,7 +6,8 @@ export const getAllProjects = async (
     rootFolder: string,
     recursive: boolean,
     ignoreFolders: string[] = [],
-    result: string[] = []
+    result: string[] = [],
+    accumulator: number = 0
 ): Promise<string[]> => {
     if (recursive) {
         const files: string[] = readdirSync(rootFolder)
@@ -14,9 +15,9 @@ export const getAllProjects = async (
         for (const fileName of files) {
             const file = join(rootFolder, fileName)
             if (statSync(file).isDirectory()) {
-                if (!folderInIgnoreList(file, ignoreFolders)) {
+                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 2) {
                     try {
-                        result = await getAllProjects(file, recursive, ignoreFolders, result)
+                        result = await getAllProjects(file, recursive, ignoreFolders, result, accumulator++)
                     } catch (error) {
                         continue
                     }

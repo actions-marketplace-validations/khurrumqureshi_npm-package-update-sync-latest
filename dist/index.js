@@ -256,16 +256,16 @@ exports.getAllProjects = void 0;
 const core_1 = __nccwpck_require__(186);
 const fs_1 = __nccwpck_require__(747);
 const path_1 = __nccwpck_require__(622);
-const getAllProjects = (rootFolder, recursive, ignoreFolders = [], result = []) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllProjects = (rootFolder, recursive, ignoreFolders = [], result = [], accumulator = 0) => __awaiter(void 0, void 0, void 0, function* () {
     if (recursive) {
         const files = (0, fs_1.readdirSync)(rootFolder);
         const regex = /package.json$/;
         for (const fileName of files) {
             const file = (0, path_1.join)(rootFolder, fileName);
             if ((0, fs_1.statSync)(file).isDirectory()) {
-                if (!folderInIgnoreList(file, ignoreFolders)) {
+                if (!folderInIgnoreList(file, ignoreFolders) && accumulator <= 2) {
                     try {
-                        result = yield (0, exports.getAllProjects)(file, recursive, ignoreFolders, result);
+                        result = yield (0, exports.getAllProjects)(file, recursive, ignoreFolders, result, accumulator++);
                     }
                     catch (error) {
                         continue;
