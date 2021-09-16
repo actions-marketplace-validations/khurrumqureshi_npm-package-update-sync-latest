@@ -154,7 +154,7 @@ class NpmCommandManager {
     }
     install() {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.exec(['install']);
+            const result = yield this.exec(['install', '--legacy-peer-deps']);
             if (result.exitCode !== 0) {
                 (0, core_1.error)(`npm install returned non-zero exitcode: ${result.exitCode}`);
                 throw new Error(`npm install returned non-zero exitcode: ${result.exitCode}`);
@@ -183,7 +183,7 @@ class NpmCommandManager {
     }
     update() {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.exec(['install', '--package-lock-only']);
+            const result = yield this.exec(['install', '--package-lock-only', '--legacy-peer-deps']);
             if (result.exitCode !== 0) {
                 (0, core_1.error)(`npm update returned non-zero exitcode: ${result.exitCode}`);
                 throw new Error(`npm install --package-lock-only returned non-zero exitcode: ${result.exitCode}`);

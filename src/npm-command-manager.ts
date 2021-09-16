@@ -18,7 +18,7 @@ export class NpmCommandManager {
     }
 
     async install(): Promise<void> {
-        const result = await this.exec(['install'])
+        const result = await this.exec(['install', '--legacy-peer-deps'])
         if (result.exitCode !== 0) {
             error(`npm install returned non-zero exitcode: ${result.exitCode}`)
             throw new Error(`npm install returned non-zero exitcode: ${result.exitCode}`)
@@ -45,7 +45,7 @@ export class NpmCommandManager {
     }
 
     async update(): Promise<void> {
-        const result = await this.exec(['install', '--package-lock-only'])
+        const result = await this.exec(['install', '--package-lock-only', '--legacy-peer-deps'])
         if (result.exitCode !== 0) {
             error(`npm update returned non-zero exitcode: ${result.exitCode}`)
             throw new Error(`npm install --package-lock-only returned non-zero exitcode: ${result.exitCode}`)
